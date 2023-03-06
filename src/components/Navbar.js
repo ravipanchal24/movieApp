@@ -5,12 +5,16 @@ const Navbar = () => {
     <div className="bg-blue-400 flex justify-around items-center gap-[5rem]   top-0 w-[100%] z-[1] h-16">
       <div className="fa-solid fa-clapperboard fa-2x"></div>
       <ul className="flex items-center gap-8 ">
-        <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">
-          Movies
-        </li>
-        <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">
-          TV Shows
-        </li>
+        <Link to="/movies">
+          <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">
+            Movies
+          </li>
+        </Link>
+        <Link to="/tv">
+          <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">
+            TV Shows
+          </li>
+        </Link>
         <Link to="/liked">
           <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">
             Liked

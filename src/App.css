@@ -1,1 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+.browse-modal{
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    animation: showModal 700ms;
+    background: rgba(192, 192, 192, 0.1);
+    /* animation: hideModal 1s; */
+}
+
+@keyframes showModal{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.browse-modal button:hover{
+    background-color: rgba(63, 60, 60, 1);
+    color: white;
+    transition: ease-in-out 150ms;
+}
+
+button:nth-child(n){
+    border-color: fuchsia;
+}
+
+button:nth-child(2n){
+    border-color: forestgreen;
+}
+
+button:nth-child(3n){
+    border-color: red;
+}
+
+button:nth-child(4n){
+    border-color: blue;
+}
