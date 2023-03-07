@@ -1,6 +1,6 @@
 import React from 'react';
-import TrendingMovies from './TrendingMovies'
-import TrendingTV from './TrendingTV'
+import TrendingMovies from './Movie/TrendingMovies'
+import TrendingTV from './TV/TrendingTV'
 const Home = (props) => {
     return (
         <div className='bg-gradient-to-r from-[#EECDA3] to-[#EF629F] pt-24'>

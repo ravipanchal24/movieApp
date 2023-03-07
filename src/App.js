@@ -5,8 +5,10 @@ import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Liked from './components/Liked';
 import axios from 'axios';
-import MoviesPage from './components/MoviesPage';
-import TVShowsPage from './components/TVShowsPage';
+import MoviesPage from './components/Movie/MoviesPage';
+import TVShowsPage from './components/TV/TVShowsPage';
+import MovieInfo from './components/Movie/MovieInfo';
+import TVInfo from './components/TV/TVInfo';
 
 function App() {
 
@@ -46,6 +48,10 @@ function App() {
           <Route path='/movies' exact element={<MoviesPage />}>
           </Route>
           <Route path='/tv' exact element={<TVShowsPage />}> 
+          </Route>
+          <Route path='/movie/:id' exact element={<MovieInfo />}> 
+          </Route>
+          <Route path='/tv/:id' exact element={<TVInfo />}> 
           </Route>
         </Routes>
       </div>
