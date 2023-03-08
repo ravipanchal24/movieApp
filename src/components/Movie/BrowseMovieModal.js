@@ -46,7 +46,7 @@ const BrowseModal = () => {
   return (
     <>
       {movieGenreID === "" && (
-        <>
+        <div className="p-12 mt-16">
           <h2>Browse among your favourite Movies</h2>
           <button
             onClick={() => setShowModal(true)}
@@ -69,7 +69,7 @@ const BrowseModal = () => {
               ))}
             </div>
           )}
-        </>
+        </div>
       )}
       <></>
       {movieGenreID !== "" && (

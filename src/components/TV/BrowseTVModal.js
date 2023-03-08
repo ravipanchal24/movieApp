@@ -41,7 +41,7 @@ const BrowseModal = () => {
   return (
     <>
       {TVGenreID === "" && (
-        <>
+        <div className="mt-16 p-12">
           <h2>Browse among your favourite TV Shows</h2>
           <button
             onClick={() => setShowModal(true)}
@@ -64,7 +64,7 @@ const BrowseModal = () => {
               ))}
             </div>
           )}
-        </>
+        </div>
       )}
       <></>
       {TVGenreID !== "" && (

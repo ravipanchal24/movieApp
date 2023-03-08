@@ -9,6 +9,8 @@ import MoviesPage from './components/Movie/MoviesPage';
 import TVShowsPage from './components/TV/TVShowsPage';
 import MovieInfo from './components/Movie/MovieInfo';
 import TVInfo from './components/TV/TVInfo';
+import About from './components/About';
+import Contact from './components/Contact';
 
 function App() {
 
@@ -47,11 +49,15 @@ function App() {
           </Route>
           <Route path='/movies' exact element={<MoviesPage />}>
           </Route>
-          <Route path='/tv' exact element={<TVShowsPage />}> 
+          <Route path='/tv' exact element={<TVShowsPage />}>
           </Route>
-          <Route path='/movie/:id' exact element={<MovieInfo />}> 
+          <Route path='/movie/:id' exact element={<MovieInfo />}>
           </Route>
-          <Route path='/tv/:id' exact element={<TVInfo />}> 
+          <Route path='/tv/:id' exact element={<TVInfo />}>
+          </Route>
+          <Route path='/aboutUs' exact element={<About />}>
+          </Route>
+          <Route path='/contactUs' exact element={<Contact />}>
           </Route>
         </Routes>
       </div>
