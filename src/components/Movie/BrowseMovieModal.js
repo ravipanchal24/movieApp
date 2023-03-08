@@ -79,14 +79,14 @@ const BrowseModal = () => {
           </h1>
           <Link to="/movies">
             <button
-              className="border border-4 rounded-2xl py-1  px-4 text-[1.5rem] mb-8"
+              className="border border-4 rounded-2xl py-1  px-4 text-[1.5rem] mb-8 hover:bg-[rgba(0,0,0,0.7)] hover:text-white "
               onClick={() => {
                 setShowModal(false);
                 setMovieGenreID("");
                 setMovieByGenreList([]);
               }}
             >
-              Back to Movies
+            <i className="fa-solid fa-arrow-left mr-4"></i>Back to Browse
             </button>
           </Link>
           <div className="flex items-center justify-center gap-24 flex-wrap">

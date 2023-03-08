@@ -45,7 +45,7 @@ const BrowseModal = () => {
           <h2>Browse among your favourite TV Shows</h2>
           <button
             onClick={() => setShowModal(true)}
-            className="border border-4 rounded-lg p-2 m-12 cursor-pointer"
+            className="border border-4 rounded-lg p-2 m-12 cursor-pointer hover:bg-[rgba(0,0,0,0.7)] hover:text-white"
           >
             Let's Browse
           </button>
@@ -74,14 +74,14 @@ const BrowseModal = () => {
           </h1>
           <Link to="/tv">
             <button
-              className="border border-4 rounded-2xl py-1  px-4 text-[1.5rem] mb-8"
+              className="border border-4 rounded-2xl py-1  px-4 text-[1.5rem] mb-8 hover:bg-[rgba(0,0,0,0.7)] hover:text-white"
               onClick={() => {
                 setShowModal(false);
                 setTVGenreID("");
                 setTVByGenreList([]);
               }}
             >
-              Back to TV Shows
+              <i className="fa-solid fa-arrow-left mr-4"></i>Back to Browse
             </button>
           </Link>
           <div className="flex items-center justify-center gap-24 flex-wrap">

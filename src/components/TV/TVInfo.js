@@ -5,6 +5,7 @@ const TvInfo = () => {
     const [TvInfo, setTvInfo] = useState({});
     const [similarTvShows, setSimilarTvShows] = useState({});
     const [watchProvider, setWatchProvider] = useState('');
+    const [cast, setCast] = useState();
 
     const { id } = useParams();
 
@@ -27,7 +28,14 @@ const TvInfo = () => {
             );
             const countryData = filterObject(res?.data?.results, 'IN');
             const flatrateData = filterObject(countryData.IN, 'flatrate');
-            setWatchProvider(flatrateData?.flatrate);
+            if (Object.keys(flatrateData).length !== 0)
+                setWatchProvider(flatrateData?.flatrate);
+        })();
+        (async () => {
+            const res = await axios.get(
+                `https://api.themoviedb.org/3/tv/${id}/credits?api_key=62e96d975b4bc3a23ae1727ea95caf4e&language=en-US`
+            );
+            setCast(res.data);
         })();
         (() => {
             window.scrollTo(0, 0);
@@ -41,30 +49,33 @@ const TvInfo = () => {
     }
 
     return (
-
-
         <>
             <div className="text-black bg-violet-400 py-[1rem]">
                 <div className="flex items-center justify-center gap-16 py-8 px-20 ">
-                    <img
+                    {TvInfo.poster_path ? <img
                         src={`https://image.tmdb.org/t/p/w500/${TvInfo.poster_path}`}
-                        alt="tv-poster"
-                        className="w-[300px] h-[450px] rounded-md"
-                    ></img>
-                    <div>
+                        alt="movie-poster"
+                        className="w-[250px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.3] transition-transform ease-in-out duration-300"
+                    ></img> :
+                        <div
+                            className="w-[250px] h-[350px] rounded-md border border-black flex items-center justify-center my-4 mx-auto"
+                        >
+                            <p>Poster Not Available</p>
+                        </div>}
+                    <div className="w-[70%]">
                         <h1 className="text-3xl my-4">{TvInfo
                             .name}</h1>
                         <h2 className="mb-2"><b>Genre</b></h2>
                         <h2 className="mb-8"><b>Release Date</b> : {TvInfo
-                            .first_air_date}</h2>
+                            .first_air_date ? TvInfo.first_air_date : 'NA'}</h2>
                         <p className="mb-2"><b>Overview</b></p>
                         <p className="mb-8">{TvInfo
-                            .overview}</p>
+                            .overview ? TvInfo.overview : 'NA'}</p>
                         <p className="mb-2"><b>No. of Seasons</b> : {TvInfo
-                            .number_of_seasons}</p>
-                        <p className="mb-4"><b>No. of Episodes</b> : {TvInfo
-                            .number_of_episodes}</p>
-                        <p className="mb-4"><b>Cast</b> : Tom Cruise, Jenifer Lopez</p>
+                            .number_of_seasons ? TvInfo.number_of_seasons : 'NA'}</p>
+                        <p className="mb-2"><b>No. of Episodes</b> : {TvInfo
+                            .number_of_episodes ? TvInfo.number_of_episodes : 'NA'}</p>
+                        <p className="mb-4"><b>Cast</b> : {cast ? cast?.cast.map((item, index) => (<span key={index}> {item.original_name} |</span>)) : 'NA'}</p>
                         <div className="flex items-center gap-4">
                             <p className=""><b>Available on</b> : </p>
                             {watchProvider !== '' ?
