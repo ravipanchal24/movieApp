@@ -31,6 +31,8 @@ const MovieInfo = () => {
 
       if (Object.keys(flatrateData).length !== 0)
         setWatchProvider(flatrateData?.flatrate);
+      else
+        setWatchProvider('')
     })();
     (async () => {
       const res = await axios.get(

@@ -30,6 +30,8 @@ const TvInfo = () => {
             const flatrateData = filterObject(countryData.IN, 'flatrate');
             if (Object.keys(flatrateData).length !== 0)
                 setWatchProvider(flatrateData?.flatrate);
+                else
+                setWatchProvider('');
         })();
         (async () => {
             const res = await axios.get(
@@ -65,7 +67,7 @@ const TvInfo = () => {
                     <div className="w-[70%]">
                         <h1 className="text-3xl my-4">{TvInfo
                             .name}</h1>
-                        <h2 className="mb-2"><b>Genre</b></h2>
+                        <h2 className="mb-4"><b>Genre:</b> {TvInfo.genres ? TvInfo.genres.map((item, index) => (<span key={index} className='ml-4'> {item.name}   </span>)) : 'NA'}</h2>
                         <h2 className="mb-8"><b>Release Date</b> : {TvInfo
                             .first_air_date ? TvInfo.first_air_date : 'NA'}</h2>
                         <p className="mb-2"><b>Overview</b></p>
