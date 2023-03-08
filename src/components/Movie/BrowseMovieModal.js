@@ -50,12 +50,12 @@ const BrowseModal = () => {
           <h2>Browse among your favourite Movies</h2>
           <button
             onClick={() => setShowModal(true)}
-            className="border border-4 rounded-lg p-2 m-12 cursor-pointer"
+            className="border border-4 rounded-lg p-2 m-12 cursor-pointer hover:bg-[rgba(0,0,0,0.7)] hover:text-white"
           >
             Let's Browse
           </button>
           {showModal && (
-            <div className="browse-modal border border-4 rounded-2xl flex flex-wrap items-center justify-center gap-4 px-8 py-12 w-[70%] h-[22rem] my-0 mx-auto backdrop-blur-md">
+            <div className="browse-modal border border-black border-4 rounded-2xl flex flex-wrap items-center justify-center gap-4 px-8 py-12 w-[70%] h-[22rem] my-0 mx-auto backdrop-blur-md">
               <i
                 className="fa-solid fa-xmark absolute top-[1.5rem] right-[2rem] cursor-pointer"
                 onClick={() => setShowModal(false)}
@@ -89,7 +89,7 @@ const BrowseModal = () => {
               Back to Movies
             </button>
           </Link>
-          <div className="flex items-center justify-center gap-[8rem] flex-wrap">
+          <div className="flex items-center justify-center gap-24 flex-wrap">
             {movieByGenreList?.results?.map((item, index) => (
               <div className="text-black" key={index}>
                 <h1 className=" text-2xl w-[370px] h-[2.2rem] overflow-hidden whitespace-nowrap text-ellipsis" id="title">

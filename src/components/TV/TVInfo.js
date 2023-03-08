@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 const TvInfo = () => {
     const [TvInfo, setTvInfo] = useState({});
     const [similarTvShows, setSimilarTvShows] = useState({});
+    const [watchProvider, setWatchProvider] = useState('');
 
     const { id } = useParams();
 
@@ -20,9 +21,28 @@ const TvInfo = () => {
             );
             setSimilarTvShows(res.data);
         })();
+        (async () => {
+            const res = await axios.get(
+                `https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=62e96d975b4bc3a23ae1727ea95caf4e`
+            );
+            const countryData = filterObject(res?.data?.results, 'IN');
+            const flatrateData = filterObject(countryData.IN, 'flatrate');
+            setWatchProvider(flatrateData?.flatrate);
+        })();
+        (() => {
+            window.scrollTo(0, 0);
+        })();
     }, [id]);
 
+    const filterObject = (obj, name) => {
+        return Object.fromEntries(
+            Object.entries(obj).filter(([key, value]) => key === name)
+        );
+    }
+
     return (
+
+
         <>
             <div className="text-black bg-violet-400 py-[1rem]">
                 <div className="flex items-center justify-center gap-16 py-8 px-20 ">
@@ -34,16 +54,27 @@ const TvInfo = () => {
                     <div>
                         <h1 className="text-3xl my-4">{TvInfo
                             .name}</h1>
-                        <h2 className="mb-4">Genre</h2>
-                        <h2 className="mb-12">Release Date : {TvInfo
+                        <h2 className="mb-2"><b>Genre</b></h2>
+                        <h2 className="mb-8"><b>Release Date</b> : {TvInfo
                             .first_air_date}</h2>
-                        <p className="mb-4">Overview</p>
+                        <p className="mb-2"><b>Overview</b></p>
                         <p className="mb-8">{TvInfo
                             .overview}</p>
-                        <p className="mb-4">Runtime : {TvInfo
-                            .runtime} minutes</p>
-                        <p className="mb-4">Cast : { }</p>
-                        <p>Available on : </p>
+                        <p className="mb-2"><b>No. of Seasons</b> : {TvInfo
+                            .number_of_seasons}</p>
+                        <p className="mb-4"><b>No. of Episodes</b> : {TvInfo
+                            .number_of_episodes}</p>
+                        <p className="mb-4"><b>Cast</b> : Tom Cruise, Jenifer Lopez</p>
+                        <div className="flex items-center gap-4">
+                            <p className=""><b>Available on</b> : </p>
+                            {watchProvider !== '' ?
+                                watchProvider.map((item, index) => (
+                                    <img key={index} src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`} alt='logo_path'
+                                        className="w-[50px] h-[50px] rounded-[50%] "></img>
+                                ))
+                                : <p>NA</p>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,7 +83,7 @@ const TvInfo = () => {
                 <div className="flex items-center justify-center gap-24 flex-wrap">
                     {similarTvShows?.results?.map((item, index) => (
                         <div className="" key={index}>
-                            <h1 className="text-center text-2xl w-[370px] h-[2.2rem] overflow-hidden whitespace-nowrap text-ellipsis" >{item.name}</h1>
+                            <h2 className="text-center text-2xl w-[370px] h-[2.2rem] overflow-hidden whitespace-nowrap text-ellipsis" >{item.name}</h2>
                             <Link to={`/tv/${item.id}`}>
                                 {item.poster_path ? <img
                                     src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
@@ -68,7 +99,6 @@ const TvInfo = () => {
                             <p className="text-center">{item.first_air_date}</p>
                         </div>
                     ))}
-                    <div></div>
                 </div>
             </div>
         </>

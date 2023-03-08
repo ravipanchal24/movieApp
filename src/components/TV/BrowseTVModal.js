@@ -15,14 +15,10 @@ const BrowseModal = () => {
     Documentary: { id: 99, name: "Documentary" },
     Drama: { id: 18, name: "Drama" },
     Family: { id: 10751, name: "Family" },
-    Fantasy: { id: 14, name: "Fantasy" },
-    History: { id: 36, name: "History" },
-    Horror: { id: 27, name: "Horror" },
-    Music: { id: 10402, name: "Music" },
+    Kids: { id: 10762, name: "Kids" },
+    Soap: { id: 10766, name: "Soap" },
     Mystery: { id: 9648, name: "Mystery" },
-    Romance: { id: 10749, name: "Romance" },
     SciFi: { id: 10765, name: "Science-Fiction" },
-    Thriller: { id: 53, name: "Thriller" },
     War: { id: 10768, name: "War" },
   };
 
@@ -54,7 +50,7 @@ const BrowseModal = () => {
             Let's Browse
           </button>
           {showModal && (
-            <div className="browse-modal border border-4 rounded-2xl flex flex-wrap items-center justify-center gap-4 px-8 py-12 w-[70%] h-[22rem] my-0 mx-auto backdrop-blur-md">
+            <div className="browse-modal border border-black border-4 rounded-2xl flex flex-wrap items-center justify-center gap-[3rem] px-8 py-12 w-[70%] h-[22rem] my-0 mx-auto backdrop-blur-md">
               <i
                 className="fa-solid fa-xmark absolute top-[1.5rem] right-[2rem] cursor-pointer"
                 onClick={() => setShowModal(false)}
@@ -88,7 +84,7 @@ const BrowseModal = () => {
               Back to TV Shows
             </button>
           </Link>
-          <div className="flex items-center justify-center gap-[9rem] flex-wrap">
+          <div className="flex items-center justify-center gap-24 flex-wrap">
             {TVByGenreList?.results?.map((item, index) => (
               <div className="text-black" key={index}>
                 <h2 className="text-center text-2xl w-[370px] h-[2.2rem] overflow-hidden whitespace-nowrap text-ellipsis" id="title">

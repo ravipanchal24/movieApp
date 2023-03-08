@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 const MovieInfo = () => {
   const [movieInfo, setMovieInfo] = useState({});
   const [similarMovies, setSimilarMovies] = useState({});
+  const [watchProvider, setWatchProvider] = useState('');
 
   const { id } = useParams();
 
@@ -20,8 +21,24 @@ const MovieInfo = () => {
       );
       setSimilarMovies(res.data);
     })();
-  }, [id]);
+    (async () => {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=62e96d975b4bc3a23ae1727ea95caf4e`
+      );
+      const countryData = filterObject(res?.data?.results, 'IN');
+      const flatrateData = filterObject(countryData.IN, 'flatrate');
 
+      setWatchProvider(flatrateData?.flatrate);
+    })();
+    (() => {
+      window.scrollTo(0, 0);
+    })();
+  }, [id]);
+  const filterObject = (obj, name) => {
+    return Object.fromEntries(
+      Object.entries(obj).filter(([key, value]) => key === name)
+    );
+  }
   return (
     <>
       <div className="text-black bg-violet-400 py-8">
@@ -33,13 +50,22 @@ const MovieInfo = () => {
           ></img>
           <div>
             <h1 className="text-3xl my-4">{movieInfo.original_title}</h1>
-            <h2 className="mb-4">Genre</h2>
-            <h2 className="mb-12">Release Date : {movieInfo.release_date}</h2>
-            <p className="mb-4">Overview</p>
+            <h2 className="mb-4"><b>Genre</b></h2>
+            <h2 className="mb-8"><b>Release Date</b> : {movieInfo.release_date}</h2>
+            <p className="mb-4"><b>Overview</b></p>
             <p className="mb-8">{movieInfo.overview}</p>
-            <p className="mb-4">Runtime : {movieInfo.runtime} minutes</p>
-            <p className="mb-4">Cast : { }</p>
-            <p>Available on : </p>
+            <p className="mb-4"><b>Runtime</b> : {movieInfo.runtime} minutes</p>
+            <p className="mb-4"><b>Cast</b> : { }</p>
+            <div className="flex items-center gap-4">
+              <p><b>Available on</b> : </p>
+              {watchProvider !== '' ?
+                watchProvider.map((item, index) => (
+                  <img key={index} src={`https://image.tmdb.org/t/p/w500/${item.logo_path}`} alt='logo_path'
+                    className="w-[50px] h-[50px] rounded-[50%] "></img>
+                ))
+                : <p>NA</p>
+              }
+            </div>
           </div>
         </div>
       </div>
