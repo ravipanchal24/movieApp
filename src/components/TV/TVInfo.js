@@ -52,7 +52,7 @@ const TvInfo = () => {
 
     return (
         <>
-            <div className="text-black bg-violet-400 py-[1rem]">
+            <div className="text-black bg-violet-400 pt-[3rem]">
                 <div className="flex items-center justify-center gap-16 py-8 px-20 ">
                     {TvInfo.poster_path ? <img
                         src={`https://image.tmdb.org/t/p/w500/${TvInfo.poster_path}`}
@@ -91,7 +91,7 @@ const TvInfo = () => {
                     </div>
                 </div>
             </div>
-            <div className="similar-tv p-8 bg-emerald-300">
+            <div className="similar-tv p-4 bg-emerald-300">
                 <h1 className="text-[3rem] text-center m-8">Similar TV Shows</h1>
                 <div className="flex items-center justify-center gap-24 flex-wrap">
                     {similarTvShows?.results?.map((item, index) => (

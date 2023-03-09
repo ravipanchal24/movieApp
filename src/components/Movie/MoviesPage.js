@@ -35,7 +35,7 @@ const MoviesPage = () => {
                 {item.poster_path ? <img
                   src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   alt="movie-poster"
-                  className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.2] transition-transform ease-in-out duration-300"
+                  className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.15] transition-transform ease-in-out duration-300"
                 ></img> :
                   <div
                     className="w-[220px] h-[350px] rounded-md border border-black flex items-center justify-center my-4 mx-auto">
@@ -55,7 +55,7 @@ const MoviesPage = () => {
                 {item.poster_path ? <img
                   src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   alt="movie-poster"
-                  className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.2] transition-transform ease-in-out duration-300"
+                  className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.15] transition-transform ease-in-out duration-300"
                 ></img> :
                   <div
                     className="w-[220px] h-[350px] rounded-md border border-black flex items-center justify-center my-4 mx-auto">
@@ -75,7 +75,7 @@ const MoviesPage = () => {
                 {item.poster_path ? <img
                   src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   alt="movie-poster"
-                  className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.2] transition-transform ease-in-out duration-300"
+                  className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.15] transition-transform ease-in-out duration-300"
                 ></img> :
                   <div
                     className="w-[220px] h-[350px] rounded-md border border-black flex items-center justify-center my-4 mx-auto">

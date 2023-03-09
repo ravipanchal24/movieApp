@@ -32,11 +32,11 @@ const TVShowsPage = () => {
             {popularShows?.results.map((item, index) => (
               <div className="shrink-0">
                 {/*<h1 className="text-center text-2xl w-[370px] h-[2.2rem] overflow-hidden whitespace-nowrap text-ellipsis" >{item.original_title}</h1> */}
-                <Link to={`/movie/${item.id}`}>
+                <Link to={`/tv/${item.id}`}>
                   {item.poster_path ? <img
                     src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                    alt="movie-poster"
-                    className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.2] transition-transform ease-in-out duration-300"
+                    alt="tv-poster"
+                    className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.15] transition-transform ease-in-out duration-300"
                   ></img> :
                     <div
                       className="w-[220px] h-[350px] rounded-md border border-black flex items-center justify-center my-4 mx-auto">
@@ -52,11 +52,11 @@ const TVShowsPage = () => {
             {topRatedShows?.results.map((item, index) => (
               <div className="shrink-0">
                 {/*<h1 className="text-center text-2xl w-[370px] h-[2.2rem] overflow-hidden whitespace-nowrap text-ellipsis" >{item.original_title}</h1> */}
-                <Link to={`/movie/${item.id}`}>
+                <Link to={`/tv/${item.id}`}>
                   {item.poster_path ? <img
                     src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                    alt="movie-poster"
-                    className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.2] transition-transform ease-in-out duration-300"
+                    alt="tv-poster"
+                    className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.15] transition-transform ease-in-out duration-300"
                   ></img> :
                     <div
                       className="w-[220px] h-[350px] rounded-md border border-black flex items-center justify-center my-4 mx-auto">
@@ -75,8 +75,8 @@ const TVShowsPage = () => {
                 <Link to={`/tv/${item.id}`}>
                   {item.poster_path ? <img
                     src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                    alt="movie-poster"
-                    className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.2] transition-transform ease-in-out duration-300"
+                    alt="tv-poster"
+                    className="w-[220px] h-[350px] rounded-md my-4 mx-auto hover:scale-[1.15] transition-transform ease-in-out duration-300"
                   ></img> :
                     <div
                       className="w-[220px] h-[350px] rounded-md border border-black flex items-center justify-center my-4 mx-auto">

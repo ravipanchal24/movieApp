@@ -51,7 +51,7 @@ const MovieInfo = () => {
   }
   return (
     <>
-      <div className="text-black bg-violet-400 py-8">
+      <div className="text-black bg-violet-400 pt-[3rem]">
         <div className="flex items-center justify-center gap-16 py-8 px-20 ">
           {movieInfo.poster_path ? <img
             src={`https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}`}
@@ -84,7 +84,7 @@ const MovieInfo = () => {
           </div>
         </div>
       </div>
-      <div className="similar-movies p-8 bg-emerald-300">
+      <div className="similar-movies p-4 bg-emerald-300">
         <h1 className="text-[3rem] text-center m-8">Similar Movies</h1>
         <div className="flex items-center justify-center gap-24 flex-wrap">
           {similarMovies?.results?.map((item, index) => (
