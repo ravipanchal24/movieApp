@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="bg-blue-400 flex justify-around items-center gap-[5rem] fixed top-0 w-[100%] z-[2] h-16">
-      <div className="fa-solid fa-clapperboard fa-2x"></div>
+      <a href="/"><i className="fa-solid fa-clapperboard fa-2x"></i></a>
       <ul className="flex items-center gap-8 ">
         <Link to="/movies">
           <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">

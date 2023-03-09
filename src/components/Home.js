@@ -34,7 +34,8 @@ const Home = (props) => {
                                     <Link to={item.media_type === 'movie' ? `/movie/${item.id}` : `/tv/${item.id}`}>
                                         {item.poster_path &&
                                             <div className='flex items-center gap-4 p-2'>
-                                                <img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} className='w-[10%] h-[15%]' alt='item_poster'></img>
+                                                {/*{isLoading ? <div className='w-[4rem] h-[6rem] border flex items-center justify-center'>Loading</div> : <img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} className='w-[4rem] h-[6rem]' alt='item_poster'></img>*/}
+                                                <img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} className='w-[4rem] h-[6rem]' alt='item_poster'></img>
                                                 <p className='cursor-pointer '>{item.media_type === 'movie' ? item.original_title ? item.original_title : item.title : item.original_name}</p>
                                             </div>
                                         }
@@ -42,7 +43,9 @@ const Home = (props) => {
                                 }
                             </div>
                         ) :
-                            <p>No results found</p>
+                            <>
+                                {!isLoading && <p>No results found</p>}
+                            </>
                         }
                     </div>
                 )}
