@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const TrendingMovieItem = (props) => {
 
-    const [fill, setFill] = useState(false);
+    // const [fill, setFill] = useState(false);
 
     return (
         <div className='flex items-center justify-center gap-[7rem] flex-wrap pb-4'>
@@ -24,11 +24,10 @@ const TrendingMovieItem = (props) => {
                             </div>}
                     </Link>
                     <span className='flex justify-center items-center gap-4'>
-                        <i className='fa-regular fa-clock fa-xl cursor-pointer'></i>
+                        <i className='fa-regular fa-clock fa-xl cursor-pointer text-[yellow]' onClick={() => props.setWatchLaterData(item)}></i>
                         <p className='text-center' id="releaseDate">{(item.first_air_date) ? item.first_air_date : item.release_date}</p>
-                        <i className={`${(fill) ? "fa-solid" : "fa-regular"} fa-heart fa-xl cursor-pointer text-[red]`} onClick={() => {
+                        <i className={`fa-regular fa-heart fa-xl cursor-pointer text-[red]`} onClick={() => {
                             props.setLikedData(item);
-                            setFill(!fill);
                         }}></i>
                     </span>
 

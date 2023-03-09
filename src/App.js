@@ -9,8 +9,9 @@ import MoviesPage from './components/Movie/MoviesPage';
 import TVShowsPage from './components/TV/TVShowsPage';
 import MovieInfo from './components/Movie/MovieInfo';
 import TVInfo from './components/TV/TVInfo';
-import About from './components/About';
-import Contact from './components/Contact';
+import About from './components//pages/About';
+import Contact from './components/pages/Contact';
+import WatchLater from './components/watchLater';
 
 function App() {
 
@@ -22,20 +23,25 @@ function App() {
   const [trendingMovies, setTrendingMovies] = useState(null);
   const [trendingTV, setTrendingTV] = useState(null);
   const [liked, setLiked] = useState([]);
+  const [watchLater, setWatchLater] = useState([]);
 
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   async function getTrendingMovies() {
-    const res = await axios.get("https://api.themoviedb.org/3/trending/movie/week?api_key=62e96d975b4bc3a23ae1727ea95caf4e");
+    const res = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`);
     setTrendingMovies(res.data)
   }
   async function getTrendingTV() {
-    const res = await axios.get("https://api.themoviedb.org/3/trending/tv/week?api_key=62e96d975b4bc3a23ae1727ea95caf4e");
+    const res = await axios.get(`https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`);
     setTrendingTV(res.data)
   }
 
   function setLikedData(data) {
     setLiked([...liked, data]);
-    console.log("hey");
+  }
+
+  function setWatchLaterData(data) {
+    setWatchLater([...watchLater, data]);
   }
 
   return (
@@ -43,9 +49,11 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path='/' exact element={<Home trendingMovies={trendingMovies} trendingTV={trendingTV} setLikedData={setLikedData} />}>
+          <Route path='/' exact element={<Home trendingMovies={trendingMovies} trendingTV={trendingTV} setLikedData={setLikedData} setWatchLaterData={setWatchLaterData} />}>
           </Route>
           <Route path='/liked' exact element={<Liked liked={liked} />}>
+          </Route>
+          <Route path='/watchLater' exact element={<WatchLater watchLater={watchLater} />}>
           </Route>
           <Route path='/movies' exact element={<MoviesPage />}>
           </Route>

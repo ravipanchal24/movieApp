@@ -5,7 +5,7 @@ const MovieList = (props) => {
         <div className=' py-8 bg-gradient-to-r from-[#009FFF] to-[rgb(0,0,0,0.5)]'>
             <h1 className='text-center text-[3rem] mb-8'>Trending Movies</h1>
             <div className='flex '>
-                <TrendingMovieItem trendingMovies = {props.trendingMovies} setLikedData={props.setLikedData}/>
+                <TrendingMovieItem trendingMovies={props.trendingMovies} setLikedData={props.setLikedData} setWatchLaterData={props.setWatchLaterData} />
             </div>
         </div>
     );

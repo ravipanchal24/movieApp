@@ -8,34 +8,35 @@ const TvInfo = () => {
     const [cast, setCast] = useState();
 
     const { id } = useParams();
+    const apiKey = process.env.REACT_APP_API_KEY;
 
     useEffect(() => {
         (async () => {
             const res = await axios.get(
-                `https://api.themoviedb.org/3/tv/${id}?api_key=62e96d975b4bc3a23ae1727ea95caf4e&language=en-US`
+                `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&language=en-US`
             );
             setTvInfo(res.data);
         })();
         (async () => {
             const res = await axios.get(
-                `https://api.themoviedb.org/3/tv/${id}/similar?api_key=62e96d975b4bc3a23ae1727ea95caf4e&language=en-US&page=1`
+                `https://api.themoviedb.org/3/tv/${id}/similar?api_key=${apiKey}&language=en-US&page=1`
             );
             setSimilarTvShows(res.data);
         })();
         (async () => {
             const res = await axios.get(
-                `https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=62e96d975b4bc3a23ae1727ea95caf4e`
+                `https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=${apiKey}`
             );
             const countryData = filterObject(res?.data?.results, 'IN');
             const flatrateData = filterObject(countryData.IN, 'flatrate');
             if (Object.keys(flatrateData).length !== 0)
                 setWatchProvider(flatrateData?.flatrate);
-                else
+            else
                 setWatchProvider('');
         })();
         (async () => {
             const res = await axios.get(
-                `https://api.themoviedb.org/3/tv/${id}/credits?api_key=62e96d975b4bc3a23ae1727ea95caf4e&language=en-US`
+                `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${apiKey}&language=en-US`
             );
             setCast(res.data);
         })();

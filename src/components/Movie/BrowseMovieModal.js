@@ -7,6 +7,8 @@ const BrowseModal = () => {
   let [movieGenre, setMovieGenre] = useState("");
   let [movieByGenreList, setMovieByGenreList] = useState([]);
 
+  const apiKey = process.env.REACT_APP_API_KEY;
+
   const genreID = {
     Action: { id: 28, name: "Action" },
     Adventure: { id: 12, name: "Adventure" },
@@ -29,10 +31,10 @@ const BrowseModal = () => {
 
   const getMoviesByGenre = useCallback(async (e) => {
     const res = await axios.get(
-      `https://api.themoviedb.org/4/discover/movie?api_key=62e96d975b4bc3a23ae1727ea95caf4e&with_genres=${movieGenreID}&with_original_language=en&sort_by=popularity.desc`
+      `https://api.themoviedb.org/4/discover/movie?api_key=${apiKey}&with_genres=${movieGenreID}&with_original_language=en&sort_by=popularity.desc`
     );
     setMovieByGenreList(res.data);
-  }, [movieGenreID])
+  }, [movieGenreID, apiKey])
 
   useEffect(() => {
     getMoviesByGenre();
@@ -86,7 +88,7 @@ const BrowseModal = () => {
                 setMovieByGenreList([]);
               }}
             >
-            <i className="fa-solid fa-arrow-left mr-4"></i>Back to Browse
+              <i className="fa-solid fa-arrow-left mr-4"></i>Back to Browse
             </button>
           </Link>
           <div className="flex items-center justify-center gap-24 flex-wrap">

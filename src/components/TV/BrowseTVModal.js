@@ -7,6 +7,8 @@ const BrowseModal = () => {
   let [TVGenre, setTVGenre] = useState("");
   let [TVByGenreList, setTVByGenreList] = useState([]);
 
+  const apiKey = process.env.REACT_APP_API_KEY;
+
   const genreID = {
     Action: { id: 10759, name: "Action & Adventure" },
     Animation: { id: 16, name: "Animation" },
@@ -24,10 +26,10 @@ const BrowseModal = () => {
 
   const getTvByGenre = useCallback(async (e) => {
     const res = await axios.get(
-      `https://api.themoviedb.org/4/discover/tv?api_key=62e96d975b4bc3a23ae1727ea95caf4e&with_genres=${TVGenreID}&sort_by=popularity.desc`
+      `https://api.themoviedb.org/4/discover/tv?api_key=${apiKey}&with_genres=${TVGenreID}&sort_by=popularity.desc`
     );
     setTVByGenreList(res.data);
-  }, [TVGenreID])
+  }, [TVGenreID, apiKey])
 
   useEffect(() => {
     getTvByGenre();

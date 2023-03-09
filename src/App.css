@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .browse-modal{
@@ -45,4 +46,12 @@ button:nth-child(3n){
 
 button:nth-child(4n){
     border-color: blue;
+}
+
+.top-shows::-webkit-scrollbar, .popular-shows::-webkit-scrollbar, .foreign-shows::-webkit-scrollbar{
+    display: none;
+}
+
+.top-movies::-webkit-scrollbar, .popular-movies::-webkit-scrollbar, .bollywood-movies::-webkit-scrollbar{
+    display: none;
 }
