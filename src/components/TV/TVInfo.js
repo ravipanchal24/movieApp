@@ -42,7 +42,7 @@ const TvInfo = () => {
     (() => {
       window.scrollTo(0, 0);
     })();
-  }, [id]);
+  }, [id, apiKey]);
 
   const filterObject = (obj, name) => {
     return Object.fromEntries(

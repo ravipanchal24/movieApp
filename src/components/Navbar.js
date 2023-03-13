@@ -15,7 +15,7 @@ const Navbar = () => {
             TV Shows
           </li>
         </Link>
-        <Link to="/liked">
+        {/*<Link to="/liked">
           <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">
             Liked
           </li>
@@ -24,7 +24,7 @@ const Navbar = () => {
           <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300">
             Watch Later
           </li>
-        </Link>
+  </Link> */}
         <li className="hover:bg-black hover:text-white p-2 cursor-pointer rounded-lg transition ease-in-out duration-300"></li>
       </ul>
       <ul className="flex items-center content-center gap-10 h-full p-5">
